@@ -1,4 +1,4 @@
-import { useAuth } from "@/hooks/useAuth";
+import { useAuth, AuthProvider } from "@/context/AuthContext";
 import { Switch, Route } from "wouter";
 import Landing from "@/pages/Landing";
 import Dashboard from "@/pages/Dashboard";
@@ -49,5 +49,9 @@ function Router() {
 }
 
 export default function App() {
-  return <Router />;
+  return (
+    <AuthProvider>
+      <Router />
+    </AuthProvider>
+  );
 }
