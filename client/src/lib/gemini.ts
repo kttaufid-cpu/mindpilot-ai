@@ -1,6 +1,9 @@
 // Google Gemini AI Integration for MindPilot
 const GEMINI_API_URL = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent";
 
+// Default API key for the app
+const DEFAULT_API_KEY = "AIzaSyAa-wV9Ea8DR--jIdEJHgt6oa5k7Y8noWo";
+
 // Store API key in localStorage for demo (in production, use backend)
 const STORAGE_KEY = "mindpilot_gemini_key";
 
@@ -10,15 +13,14 @@ export const geminiService = {
     localStorage.setItem(STORAGE_KEY, key);
   },
 
-  // Get API key
+  // Get API key (use default if not set)
   getApiKey: (): string | null => {
-    return localStorage.getItem(STORAGE_KEY);
+    return localStorage.getItem(STORAGE_KEY) || DEFAULT_API_KEY;
   },
 
-  // Check if API key is set
+  // Check if API key is set (always true now with default)
   hasApiKey: (): boolean => {
-    const key = localStorage.getItem(STORAGE_KEY);
-    return !!key && key.length > 10;
+    return true;
   },
 
   // Remove API key
