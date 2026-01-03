@@ -1,5 +1,7 @@
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/hooks/useAuth";
+import LanguageSelector from "@/components/LanguageSelector";
 import { 
   Brain, 
   Wallet, 
@@ -14,6 +16,7 @@ import {
 } from "lucide-react";
 
 export default function Landing() {
+  const { t } = useTranslation();
   const { login } = useAuth();
 
   const handleLogin = (e: React.MouseEvent) => {
@@ -77,22 +80,23 @@ export default function Landing() {
             <span className="font-semibold text-lg">MindPilot AI</span>
           </div>
           <nav className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition">Features</a>
-            <a href="#how" className="hover:text-foreground transition">How it works</a>
-            <a href="#pricing" className="hover:text-foreground transition">Pricing</a>
+            <a href="#features" className="hover:text-foreground transition">{t('features')}</a>
+            <a href="#how" className="hover:text-foreground transition">{t('howItWorks')}</a>
+            <a href="#pricing" className="hover:text-foreground transition">{t('pricing')}</a>
           </nav>
           <div className="flex items-center gap-3">
+            <LanguageSelector />
             <button 
               onClick={handleLogin}
               className="px-5 py-2.5 rounded-full border border-border text-sm font-medium hover:bg-muted/50 transition"
             >
-              Log in
+              {t('login')}
             </button>
             <button 
               onClick={handleLogin}
               className="px-5 py-2.5 rounded-full bg-primary text-primary-foreground text-sm font-medium hover:opacity-90 transition shadow-lg shadow-primary/25"
             >
-              Start Free Trial
+              {t('startFreeTrial')}
             </button>
           </div>
         </div>
@@ -109,38 +113,38 @@ export default function Landing() {
               >
                 <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full border border-border bg-card/50 text-sm text-muted-foreground mb-6">
                   <Sparkles className="w-4 h-4 text-primary" />
-                  AI life assistant for adults 25–50
+                  {t('tagline')}
                 </div>
                 <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6">
-                  <span className="gradient-text">MindPilot AI</span>
+                  <span className="gradient-text">{t('heroTitle')}</span>
                   <br />
-                  The assistant thinks ahead for you.
+                  {t('heroSubtitle')}
                 </h1>
                 <p className="text-lg text-muted-foreground max-w-lg mb-8">
-                  Automate your tasks, money, and daily routines with a single AI assistant built for real life — not just work.
+                  {t('heroDescription')}
                 </p>
                 <div className="grid grid-cols-2 gap-4 mb-8 text-sm text-muted-foreground">
-                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> AI plans your day</span>
-                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> Clear spending view</span>
-                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> Smarter routines</span>
-                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> One app for life</span>
+                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> {t('aiPlansDay')}</span>
+                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> {t('clearSpending')}</span>
+                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> {t('smarterRoutines')}</span>
+                  <span className="flex items-center gap-2"><CheckCircle className="w-4 h-4 text-accent" /> {t('oneAppForLife')}</span>
                 </div>
                 <div className="flex flex-wrap gap-4">
                   <button 
                     onClick={handleLogin}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-primary-foreground font-medium hover:opacity-90 transition shadow-lg shadow-primary/25"
                   >
-                    Start 7-Day Free Trial <ArrowRight className="w-4 h-4" />
+                    {t('start7DayTrial')} <ArrowRight className="w-4 h-4" />
                   </button>
                   <button 
                     onClick={handleLogin}
                     className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-border font-medium hover:bg-muted/50 transition"
                   >
-                    Try Free Forever
+                    {t('tryFreeForever')}
                   </button>
                 </div>
                 <p className="text-xs text-muted-foreground mt-4">
-                  No credit card needed for Free plan. Cancel or downgrade anytime.
+                  {t('noCreditCard')}
                 </p>
               </motion.div>
 
