@@ -79,10 +79,10 @@ const en = {
     
     // Pricing
     pricingTitle: "Simple, transparent pricing",
-    pricingDescription: "Start free forever or unlock everything with Premium.",
-    freeForever: "Free Forever",
+    pricingDescription: "Start with a 7-day free trial or unlock everything with Premium.",
+    freeForever: "Free Trial",
     premium: "Premium",
-    lifetime: "lifetime",
+    lifetime: "7 days free",
     perMonth: "/month",
     mostPopular: "Most Popular",
     startFree: "Start Free",
@@ -330,10 +330,10 @@ const ms = {
     
     // Pricing
     pricingTitle: "Harga mudah dan telus",
-    pricingDescription: "Mula percuma selamanya atau buka semua dengan Premium.",
-    freeForever: "Percuma Selamanya",
+    pricingDescription: "Mula dengan percubaan percuma 7 hari atau buka semua dengan Premium.",
+    freeForever: "Percubaan Percuma",
     premium: "Premium",
-    lifetime: "seumur hidup",
+    lifetime: "7 hari percuma",
     perMonth: "/bulan",
     mostPopular: "Paling Popular",
     startFree: "Mula Percuma",
@@ -818,6 +818,7 @@ i18n
       th,
       vi,
     },
+    lng: 'en', // Set English as default
     fallbackLng: 'en',
     interpolation: {
       escapeValue: false,
@@ -825,6 +826,7 @@ i18n
     detection: {
       order: ['localStorage', 'navigator'],
       caches: ['localStorage'],
+      lookupLocalStorage: 'i18nextLng',
     },
   });
 

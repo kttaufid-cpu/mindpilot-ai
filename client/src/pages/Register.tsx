@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
+import { useTranslation } from "react-i18next";
 import { useAuth } from "@/hooks/useAuth";
+import LanguageSelector from "@/components/LanguageSelector";
 import { 
   Brain, 
   Mail, 
@@ -25,6 +27,7 @@ interface RegisterProps {
 }
 
 export default function Register({ onRegister, onBack, selectedTab }: RegisterProps) {
+  const { t } = useTranslation();
   const { loginWithEmail, loginWithGoogle, error: authError } = useAuth();
   const [isLoginMode, setIsLoginMode] = useState(false);
   const [firstName, setFirstName] = useState("");
@@ -107,11 +110,11 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
   };
 
   const features = [
-    "7 hari percubaan percuma",
-    "AI pembantu peribadi",
-    "Pengurusan tugas pintar",
-    "Penjejakan kewangan",
-    "Pemantauan kesihatan"
+    t('feature7DayTrial'),
+    t('featureAIAssistant'),
+    t('featureSmartTasks'),
+    t('featureFinanceTracking'),
+    t('featureWellnessMonitoring')
   ];
 
   return (
@@ -123,12 +126,15 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
           animate={{ opacity: 1, y: 0 }}
           className="w-full max-w-md"
         >
-          <button
-            onClick={onBack}
-            className="flex items-center gap-2 text-muted-foreground hover:text-foreground mb-8 transition"
-          >
-            ← Kembali ke laman utama
-          </button>
+          <div className="flex items-center justify-between mb-8">
+            <button
+              onClick={onBack}
+              className="flex items-center gap-2 text-muted-foreground hover:text-foreground transition"
+            >
+              {t('backToHome')}
+            </button>
+            <LanguageSelector />
+          </div>
 
           <div className="flex items-center gap-3 mb-2">
             <img src="/logo.png" alt="MindPilot AI" className="w-10 h-10 rounded-xl" />
@@ -136,10 +142,10 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
           </div>
           
           <h1 className="text-3xl font-bold mb-2">
-            {isLoginMode ? "Log Masuk" : "Daftar Akaun Baru"}
+            {isLoginMode ? t('loginTitle') : t('registerTitle')}
           </h1>
           <p className="text-muted-foreground mb-6">
-            {isLoginMode ? "Selamat kembali! Sila log masuk ke akaun anda" : "Mula percubaan percuma 7 hari anda hari ini"}
+            {isLoginMode ? t('welcomeBack') : t('startTrialToday')}
           </p>
 
           {/* Google Login Button */}
@@ -155,7 +161,7 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
               <path fill="#FBBC05" d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z"/>
               <path fill="#EA4335" d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z"/>
             </svg>
-            {isLoginMode ? "Log masuk dengan Google" : "Daftar dengan Google"}
+            {isLoginMode ? t('loginWithGoogle') : t('registerWithGoogle')}
           </button>
 
           <div className="relative my-6">
@@ -163,7 +169,7 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
               <div className="w-full border-t border-border"></div>
             </div>
             <div className="relative flex justify-center text-sm">
-              <span className="px-4 bg-background text-muted-foreground">atau</span>
+              <span className="px-4 bg-background text-muted-foreground">{t('or')}</span>
             </div>
           </div>
 
@@ -171,26 +177,26 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
             {!isLoginMode && (
               <div className="grid grid-cols-2 gap-4">
                 <div>
-                  <label className="block text-sm font-medium mb-2">Nama Pertama</label>
+                  <label className="block text-sm font-medium mb-2">{t('firstName')}</label>
                   <div className="relative">
                     <User className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                     <input
                       type="text"
                       value={firstName}
                       onChange={(e) => setFirstName(e.target.value)}
-                      placeholder="Ahmad"
+                      placeholder="John"
                       className={`w-full pl-10 pr-4 py-3 rounded-xl bg-muted/50 border ${errors.firstName ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none`}
                     />
                   </div>
                   {errors.firstName && <p className="text-red-400 text-xs mt-1">{errors.firstName}</p>}
                 </div>
                 <div>
-                  <label className="block text-sm font-medium mb-2">Nama Akhir</label>
+                  <label className="block text-sm font-medium mb-2">{t('lastName')}</label>
                   <input
                     type="text"
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
-                    placeholder="Ali"
+                    placeholder="Doe"
                     className={`w-full px-4 py-3 rounded-xl bg-muted/50 border ${errors.lastName ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none`}
                   />
                   {errors.lastName && <p className="text-red-400 text-xs mt-1">{errors.lastName}</p>}
@@ -199,14 +205,14 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
             )}
 
             <div>
-              <label className="block text-sm font-medium mb-2">Email</label>
+              <label className="block text-sm font-medium mb-2">{t('email')}</label>
               <div className="relative">
                 <Mail className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
-                  placeholder="ahmad@contoh.com"
+                  placeholder="john@example.com"
                   className={`w-full pl-10 pr-4 py-3 rounded-xl bg-muted/50 border ${errors.email ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none`}
                 />
               </div>
@@ -214,14 +220,14 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
             </div>
 
             <div>
-              <label className="block text-sm font-medium mb-2">Kata Laluan</label>
+              <label className="block text-sm font-medium mb-2">{t('password')}</label>
               <div className="relative">
                 <Lock className="absolute left-3 top-1/2 -translate-y-1/2 w-5 h-5 text-muted-foreground" />
                 <input
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
-                  placeholder="Minimum 6 aksara"
+                  placeholder={t('minChars')}
                   className={`w-full pl-10 pr-12 py-3 rounded-xl bg-muted/50 border ${errors.password ? 'border-red-500' : 'border-border'} focus:border-primary focus:outline-none`}
                 />
                 <button
@@ -246,10 +252,10 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
                     className="mt-1 w-4 h-4 rounded border-border text-primary focus:ring-primary"
                   />
                   <label htmlFor="terms" className="text-sm text-muted-foreground">
-                    Saya bersetuju dengan{" "}
-                    <a href="#" className="text-primary hover:underline">Terma & Syarat</a>
-                    {" "}dan{" "}
-                    <a href="#" className="text-primary hover:underline">Dasar Privasi</a>
+                    {t('agreeToTerms')}{" "}
+                    <a href="#" className="text-primary hover:underline">{t('termsAndConditions')}</a>
+                    {" "}{t('and')}{" "}
+                    <a href="#" className="text-primary hover:underline">{t('privacyPolicy')}</a>
                   </label>
                 </div>
                 {errors.terms && <p className="text-red-400 text-xs">{errors.terms}</p>}
@@ -270,7 +276,7 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
                 <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
               ) : (
                 <>
-                  {isLoginMode ? "Log Masuk" : "Mula Percubaan Percuma"} <ArrowRight className="w-4 h-4" />
+                  {isLoginMode ? t('loginButton') : t('startTrialButton')} <ArrowRight className="w-4 h-4" />
                 </>
               )}
             </button>
@@ -279,16 +285,16 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
           <p className="text-center text-sm text-muted-foreground mt-6">
             {isLoginMode ? (
               <>
-                Belum ada akaun?{" "}
+                {t('dontHaveAccount')}{" "}
                 <button onClick={() => setIsLoginMode(false)} className="text-primary hover:underline">
-                  Daftar sekarang
+                  {t('registerNow')}
                 </button>
               </>
             ) : (
               <>
-                Sudah ada akaun?{" "}
+                {t('alreadyHaveAccount')}{" "}
                 <button onClick={() => setIsLoginMode(true)} className="text-primary hover:underline">
-                  Log masuk
+                  {t('login')}
                 </button>
               </>
             )}
@@ -307,7 +313,7 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
           <div className="glass rounded-3xl p-8 glow">
             <div className="flex items-center gap-2 text-primary mb-6">
               <Sparkles className="w-6 h-6" />
-              <span className="font-semibold">Apa yang anda dapat</span>
+              <span className="font-semibold">{t('whatYouGet')}</span>
             </div>
 
             <div className="space-y-4 mb-8">
@@ -329,12 +335,12 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
               <div className="flex items-center gap-3 mb-3">
                 <Brain className="w-8 h-8 text-primary" />
                 <div>
-                  <p className="font-semibold">Percubaan Percuma 7 Hari</p>
-                  <p className="text-sm text-muted-foreground">Kemudian RM9.90/bulan</p>
+                  <p className="font-semibold">{t('trialInfo')}</p>
+                  <p className="text-sm text-muted-foreground">{t('thenPrice')}</p>
                 </div>
               </div>
               <p className="text-xs text-muted-foreground">
-                Batalkan bila-bila masa. Tiada kad kredit diperlukan untuk mula.
+                {t('cancelAnytime')}
               </p>
             </div>
           </div>
