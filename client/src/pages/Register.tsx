@@ -91,7 +91,16 @@ export default function Register({ onRegister, onBack, selectedTab }: RegisterPr
     try {
       await loginWithGoogle();
     } catch (err: any) {
-      setErrors({ submit: err.message || "Ralat log masuk Google" });
+      console.error("Google login error:", err);
+      let errorMessage = "Ralat log masuk Google";
+      if (err.code === "auth/unauthorized-domain") {
+        errorMessage = "Domain ini belum dibenarkan untuk Firebase. Sila gunakan email/password.";
+      } else if (err.code === "auth/popup-closed-by-user") {
+        errorMessage = "Popup ditutup. Sila cuba lagi.";
+      } else if (err.message) {
+        errorMessage = err.message;
+      }
+      setErrors({ submit: errorMessage });
     } finally {
       setIsLoading(false);
     }
