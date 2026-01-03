@@ -9,6 +9,7 @@
     "start": "NODE_ENV=production node dist/index.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@neondatabase/serverless": "^0.9.0",
     "@tanstack/react-query": "^5.90.12",
     "class-variance-authority": "^0.7.1",
@@ -18,6 +19,7 @@
     "drizzle-orm": "^0.31.4",
     "express": "^4.22.1",
     "express-session": "^1.18.2",
+    "firebase": "^12.7.0",
     "framer-motion": "^11.18.2",
     "lucide-react": "^0.441.0",
     "memoizee": "^0.4.17",
