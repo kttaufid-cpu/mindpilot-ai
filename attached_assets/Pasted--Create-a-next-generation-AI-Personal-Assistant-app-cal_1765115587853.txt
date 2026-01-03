@@ -1,0 +1,119 @@
+“Create a next-generation AI Personal Assistant app called MindPilot AI, fully powered by artificial intelligence without any human backend. This app is designed for users aged 25–50 who want a smarter way to manage daily life, finances, tasks, routines, and personal productivity. The app must include two versions: FREE (lifetime access) and PREMIUM (RM9.90/month with a 7-day free trial).”
+
+1. BUSINESS MODEL
+
+FREE VERSION (Lifetime Access):
+
+Lifetime access with limitations.
+
+Ads (minimal & non-intrusive).
+
+Limited AI responses per day (10–15).
+
+Limited storage.
+
+No financial sync.
+
+No advanced automation.
+
+Basic summaries only.
+
+PREMIUM VERSION (RM9.90/month):
+
+7-day free trial.
+
+Unlimited AI responses.
+
+Unlimited cloud storage.
+
+Full automated task management.
+
+Smart Financial Sync (banks, e-wallets, bills).
+
+Advanced daily insights & personalized routines.
+
+Priority AI processing.
+
+No ads.
+
+Encrypted cloud backup.
+
+2. CORE FEATURES
+
+AI Task Manager & Automation
+
+Free: manual tasks + simple reminders.
+
+Premium: auto-generated daily tasks, priority sorting, location-based reminders.
+
+AI Personal Finance Manager
+
+Free: manual tracking + basic stats.
+
+Premium: auto categorization, spending insights, bill alerts, financial forecasting.
+
+AI Life Organizer
+
+Free: up to 10 documents.
+
+Premium: unlimited storage + automatic AI sorting.
+
+AI Wellness & Health Coach
+
+Free: mood tracking only.
+
+Premium: personalized routines, wellness insights, habit tracking automation.
+
+AI Personal Coach
+
+Free: up to 3 goals/month.
+
+Premium: unlimited goals + monthly action plans.
+
+Smart Communication Assistant
+
+Free: 5 summaries/day.
+
+Premium: unlimited summaries + voice mode + instant message digest.
+
+3. UI/UX REQUIREMENTS
+
+Minimalist, premium feel.
+
+Smooth navigation with 3–4 main tabs.
+
+Color theme: cobalt/teal/dark mode friendly.
+
+Everything must "feel intelligent".
+
+4. AI ENGINE REQUIREMENTS
+
+100% AI-driven automation.
+
+Learns user habits, preferences, routines.
+
+Predictive behaviour (suggest tasks, warn financial shifts, plan days automatically).
+
+Human-like tone and fast response.
+
+5. OUTPUT REQUIRED
+
+The system must generate:
+
+Full app structure
+
+Free vs Premium feature map
+
+User journey (onboarding → daily use)
+
+Monetization flow & upgrade triggers
+
+Branding, tagline, and positioning
+
+UI wireframe concepts
+
+Data model overview
+
+Privacy & security plan
+
+The final result must position this as an all-in-one AI life assistant: tasks, finance, routines, wellness, document management, and personal coaching — fully automated and personalized.”
